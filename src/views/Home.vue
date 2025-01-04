@@ -15,6 +15,7 @@
 
 <script>
 import AppCard from '../components/AppCard.vue'
+import {baseUrl} from '../config.js'
 
 export default {
   components: {
@@ -27,7 +28,7 @@ export default {
     }
   },
   async created() {
-    const response = await fetch('/data/apps.json')
+    const response = await fetch(baseUrl+'/data/apps.json')
     this.apps = await response.json()
   },
   computed: {
