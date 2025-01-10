@@ -1,9 +1,9 @@
 <template>
   <div class="app-card" @click="goToDetail">
-    <img :src="app.image" :alt="app.name" class="app-image" />
+    <img style="width: 150px;height: 150px;" :src="app.image" :alt="app.name" class="app-image" />
     <h2>{{ app.name }}</h2>
     <p>{{ app.description }}</p>
-    <a :href="app.downloadLink" class="download-button" @click.stop>Download</a>
+    <a :href="app.downloadLink" class="download-button" @click.stop>下载</a>
   </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     goToDetail() {
-      this.$router.push(`/app/${this.app.id}`)
+      // this.$router.push(`/app/${this.app.id}`)
     },
   },
 }
