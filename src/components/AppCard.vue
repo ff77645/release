@@ -33,6 +33,19 @@ export default {
   max-width: 300px;
   margin: 8px;
   box-sizing: border-box;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.app-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: #42b983;
+}
+
+.app-card:active {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .app-image {
