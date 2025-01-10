@@ -45,19 +45,47 @@ export default {
 .home {
   padding: 20px;
   text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .search-input {
   padding: 8px;
-  width: 300px;
+  width: 90%;
+  max-width: 300px;
   margin-bottom: 20px;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
 .app-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 280px);
+  gap: 16px;
   justify-content: center;
+  padding: 0 16px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .home {
+    padding: 16px;
+  }
+  
+  .app-list {
+    gap: 12px;
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home {
+    padding: 12px;
+  }
+  
+  .app-list {
+    gap: 8px;
+    padding: 0 4px;
+  }
 }
 </style>
