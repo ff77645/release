@@ -4,12 +4,13 @@
     <h2>{{ app.name }}v{{ version }}</h2>
     <p>更新: {{ updatedAt }}</p>
     <p>大小: {{ size }}</p>
-    <a :href="downloadLink" class="download-button">下载</a>
+    <a :href="downloadLink" class="download-button" download>下载</a>
   </div>
 </template>
 
 <script>
 import {load} from 'js-yaml'
+const proxy = 'https://proxy2.tooto.live/proxy?url='
 
 export default {
   props: {
@@ -32,7 +33,7 @@ export default {
   methods: {
     async initData(){
       if(!this.app.downloadLink) return
-      const res = await fetch(this.app.downloadLink + '/latest.yml').then(res=>res.text())
+      const res = await fetch(proxy + this.app.downloadLink + '/latest.yml').then(res=>res.text())
       const obj = load(res)
       console.log(this.app.name,{obj});
       const file = obj.files[0]
