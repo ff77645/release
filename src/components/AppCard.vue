@@ -34,6 +34,7 @@ export default {
     async initData(){
       if(!this.app.downloadLink) return
       const res = await fetch(proxy + this.app.downloadLink + '/latest.yml').then(res=>res.text())
+      if(!res) return
       const obj = load(res)
       console.log(this.app.name,{obj});
       const file = obj.files[0]
