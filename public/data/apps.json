@@ -3,7 +3,10 @@
     "id": 1,
     "name": "前台收银-测试版",
     "description": "",
-    "image": "http://webnet.cloudvast.com/releases/cashier-win/qtsy.ico",
-    "downloadLink": "http://webnet.cloudvast.com/releases/cashier-win"
+    "image": "https://shopimg.cloudvast.com/ico/qtsy.ico",
+    "downloadLink": "http://webnet.cloudvast.com/releases/cashier-win",
+    "version": "2.1.0",
+    "size": "75MB",
+    "updatedAt": "2023-09-15"
   }
 ]
