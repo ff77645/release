@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>App Showcase</h1>
+    <h1>应用中心</h1>
     <input
       v-model="searchQuery"
       type="text"

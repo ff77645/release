@@ -1,13 +1,16 @@
 <template>
   <div class="app-card" @click="goToDetail">
     <img :src="app.image" :alt="app.name" class="app-image" />
-    <h2>{{ app.name }}</h2>
-    <p>{{ app.description }}</p>
-    <a :href="app.downloadLink" class="download-button" @click.stop>下载</a>
+    <h2>{{ app.name }}v{{ version }}</h2>
+    <p>更新: {{ updatedAt }}</p>
+    <p>大小: {{ size }}</p>
+    <a :href="downloadLink" class="download-button">下载</a>
   </div>
 </template>
 
 <script>
+import {load} from 'js-yaml'
+
 export default {
   props: {
     app: {
@@ -15,10 +18,33 @@ export default {
       required: true,
     },
   },
+  data(){
+    return {
+      updatedAt:'',
+      version:'',
+      size:'',
+      downloadLink:''
+    }
+  },
+  mounted(){
+    this.initData()
+  },
   methods: {
+    async initData(){
+      if(!this.app.downloadLink) return
+      const res = await fetch(this.app.downloadLink + '/latest.yml').then(res=>res.text())
+      const obj = load(res)
+      console.log(this.app.name,{obj});
+      const file = obj.files[0]
+      this.size = (file.size / 1024 / 1024).toFixed(2) + 'MB'
+      this.version = obj.version
+      this.downloadLink = this.app.downloadLink + '/' + obj.path
+      this.updatedAt = new Date(obj.releaseDate).toLocaleString()
+    },
     goToDetail() {
       // this.$router.push(`/app/${this.app.id}`)
     },
+    onDownload(){}
   },
 }
 </script>

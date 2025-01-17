@@ -1,22 +1,12 @@
 [
   {
-    "id": 2,
-    "name": "前台收银",
+    "id": 1,
+    "name": "前台收银-测试版",
     "description": "",
     "image": "qtsy.ico",
-    "downloadLink": "#",
+    "downloadLink": "http://webnet.cloudvast.com/releases/cashier-win",
     "version": "2.1.0",
     "size": "75MB",
     "updatedAt": "2023-09-15"
-  },
-  {
-    "id": 1,
-    "name": "企慧通",
-    "description": "",
-    "image": "qht.ico",
-    "downloadLink": "#",
-    "version": "1.0.0",
-    "size": "50MB",
-    "updatedAt": "2023-10-01"
   }
 ]
