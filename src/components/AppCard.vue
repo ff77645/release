@@ -5,6 +5,7 @@
     <p v-if="downloadLink">更新: {{ updatedAt }}</p>
     <p v-if="downloadLink">大小: {{ size }}</p>
     <a v-if="downloadLink && !app.isDisable" :href="downloadLink" class="download-button">下载</a>
+    <button v-if="downloadLink && !app.isDisable" @click.stop="copyLink" class="copy-button">复制链接</button>
   </div>
 </template>
 
@@ -45,6 +46,14 @@ export default {
     },
     goToDetail() {
       // this.$router.push(`/app/${this.app.id}`)
+    },
+    async copyLink() {
+      try {
+        await navigator.clipboard.writeText(this.downloadLink)
+        alert('链接已复制到剪贴板')
+      } catch (err) {
+        alert('复制失败，请手动复制链接: ' + this.downloadLink)
+      }
     },
     onDownload(){}
   },
@@ -96,6 +105,23 @@ export default {
 }
 
 .download-button:hover {
+  background-color: #369f6e;
+}
+
+.copy-button {
+  display: inline-block;
+  margin: 16px 0 0 8px;
+  padding: 8px 16px;
+  background-color: #42b983;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.copy-button:hover {
   background-color: #369f6e;
 }
 
