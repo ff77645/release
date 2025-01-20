@@ -2,9 +2,9 @@
   <div class="app-card" @click="goToDetail">
     <img :src="app.image" :alt="app.name" class="app-image" />
     <h2>{{ app.name }}v{{ version }}</h2>
-    <p>更新: {{ updatedAt }}</p>
-    <p>大小: {{ size }}</p>
-    <a :href="downloadLink" class="download-button" download>下载</a>
+    <p v-if="downloadLink">更新: {{ updatedAt }}</p>
+    <p v-if="downloadLink">大小: {{ size }}</p>
+    <a v-if="downloadLink && !app.isDisable" :href="downloadLink" class="download-button" download>下载</a>
   </div>
 </template>
 

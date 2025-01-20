@@ -4,7 +4,8 @@
     "name": "前台收银",
     "description": "",
     "image": "https://shopimg.cloudvast.com/ico/qtsy.ico",
-    "downloadLink": "http://webnet.cloudvast.com/releases/cashier-win-stable"
+    "downloadLink": "http://webnet.cloudvast.com/releases/cashier-win-stable",
+    "isDisable":true
   },
   {
     "id": 2,
