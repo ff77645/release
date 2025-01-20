@@ -4,7 +4,9 @@
     <h2>{{ app.name }}v{{ version }}</h2>
     <p v-if="downloadLink">更新: {{ updatedAt }}</p>
     <p v-if="downloadLink">大小: {{ size }}</p>
-    <a v-if="downloadLink && !app.isDisable" :href="downloadLink" class="download-button" download>下载</a>
+    <a v-if="downloadLink && !app.isDisable" :href="downloadLink" class="download-button">下载</a>
+    <br>
+    <a v-if="downloadLink && !app.isDisable" :href="downloadLink" class="download-button" target="_blank">下载</a>
   </div>
 </template>
 
