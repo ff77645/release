@@ -8,8 +8,19 @@
       class="search-input"
     />
     <div class="app-list">
-      <AppCard v-for="app in filteredApps" :key="app.id" :app="app" />
+      <AppCard 
+        v-for="app in filteredApps" 
+        :key="app.id" 
+        :app="app"
+        @showtip="showGlobalTip"
+      />
     </div>
+    <transition name="fade">
+      <div v-if="showTip" class="global-tip fixed-tip">
+        <span class="tip-icon">!</span>
+        点击下载没反应可复制下载链接自行下载
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -25,6 +36,20 @@ export default {
     return {
       apps: [],
       searchQuery: '',
+      showTip: false
+    }
+  },
+  methods: {
+    showGlobalTip() {
+      this.showTip = true
+      setTimeout(() => {
+        this.showTip = false
+      }, 3000)
+    }
+  },
+  provide() {
+    return {
+      showGlobalTip: this.showGlobalTip
     }
   },
   async created() {
@@ -131,6 +156,85 @@ export default {
   .app-list {
     gap: 8px;
     padding: 0 4px;
+  }
+}
+
+.global-tip {
+  margin: 20px auto 0;
+  padding: 12px;
+  background: #fff3cd;
+  border-radius: 4px;
+  color: #856404;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 800px;
+}
+
+.fixed-tip {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  animation: slideDown 0.3s ease-out;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translate(-50%, -20px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+.tip-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #856404;
+  color: white;
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .global-tip {
+    margin: 16px 16px 0;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .global-tip {
+    margin: 12px 12px 0;
+    font-size: 12px;
+    padding: 10px;
+  }
+  
+  .tip-icon {
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    font-size: 12px;
   }
 }
 </style>

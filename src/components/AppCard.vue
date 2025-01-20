@@ -4,7 +4,7 @@
     <h2>{{ app.name }}v{{ version }}</h2>
     <p v-if="downloadLink">更新: {{ updatedAt }}</p>
     <p v-if="downloadLink">大小: {{ size }}</p>
-    <a v-if="downloadLink && !app.isDisable" :href="downloadLink" class="download-button">下载</a>
+    <a @click="showTips" v-if="downloadLink && !app.isDisable" :href="downloadLink" class="download-button">下载</a>
     <button v-if="downloadLink && !app.isDisable" @click.stop="copyLink" class="copy-button">复制链接</button>
   </div>
 </template>
@@ -32,6 +32,9 @@ export default {
     this.initData()
   },
   methods: {
+    showTips(){
+      this.$emit('showtip')
+    },
     async initData(){
       if(!this.app.downloadLink) return
       const res = await fetch(proxy + this.app.downloadLink + '/latest.yml?t=' + Date.now()).then(res=>res.text())
