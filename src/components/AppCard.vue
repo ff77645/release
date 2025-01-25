@@ -1,9 +1,10 @@
 <template>
   <div class="app-card" @click="goToDetail">
     <img :src="app.image" :alt="app.name" class="app-image" />
-    <h2>{{ app.name }}v{{ version }}</h2>
-    <p v-if="downloadLink">更新: {{ updatedAt }}</p>
-    <p v-if="downloadLink">大小: {{ size }}</p>
+    <h2>{{ app.name }}</h2>
+    <p v-if="version">版本: {{ version }}</p>
+    <p v-if="size">大小: {{ size }}</p>
+    <p v-if="updatedAt">更新: {{ updatedAt }}</p>
     <a @click="showTips" v-if="downloadLink && !app.isDisable" :href="downloadLink" class="download-button">下载</a>
     <button v-if="downloadLink && !app.isDisable" @click.stop="copyLink" class="copy-button">复制链接</button>
   </div>
