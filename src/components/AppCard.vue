@@ -36,7 +36,18 @@ export default {
     showTips(){
       this.$emit('showtip')
     },
+    async initRepoInfo(){
+      const res = await fetch(`https://gitee.com/api/v5/repos/isfy/${this.app.v_repo}/releases/latest?access_token=4414c1863ef09c1a86db5e528ef22a79&ref=master`)
+      .then(res=>res.json())
+      if(!res.tag_name) return
+      this.version = res.tag_name
+      const body = JSON.parse(res.body)
+      this.downloadLink = body.url
+      this.size = body.size || ''
+      this.updatedAt = new Date(res.created_at).toLocaleString()
+    },
     async initData(){
+      if(this.app.v_repo) return this.initRepoInfo()
       if(!this.app.downloadLink) return
       const res = await fetch(proxy + this.app.downloadLink + '/latest.yml?t=' + Date.now()).then(res=>res.text())
       if(!res) return

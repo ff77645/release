@@ -9,8 +9,9 @@
   {
     "id": 3,
     "name": "前台收银(Android)-测试版",
+    "v_repo":"cashier-android-beta",
     "description": "",
-    "image": "https://shopimg.cloudvast.com/ico/qtsy.ico",
-    "downloadLink": "http://webnet.cloudvast.com/releases/cashier-win-beta"
+    "image": "https://shopimg.cloudvast.com/ico/qtsy.ico"
   }
+
 ]
