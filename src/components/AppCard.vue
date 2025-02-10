@@ -12,6 +12,7 @@
 
 <script>
 import {load} from 'js-yaml'
+import {getActoken} from '../utils/index'
 const proxy = 'https://proxy2.tooto.live/proxy?url='
 
 export default {
@@ -37,7 +38,8 @@ export default {
       this.$emit('showtip')
     },
     async initRepoInfo(){
-      const res = await fetch(`https://gitee.com/api/v5/repos/isfy/${this.app.v_repo}/releases/latest?access_token=4414c1863ef09c1a86db5e528ef22a79&ref=master`)
+      const token = await getActoken()
+      const res = await fetch(`https://gitee.com/api/v5/repos/isfy/${this.app.v_repo}/releases/latest?access_token=${token}&ref=master`)
       .then(res=>res.json())
       if(!res.tag_name) return
       this.version = res.tag_name
