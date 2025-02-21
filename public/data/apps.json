@@ -1,5 +1,12 @@
 [
   {
+    "id": 1,
+    "name": "前台收银(Windows)-正式版",
+    "description": "",
+    "image": "https://shopimg.cloudvast.com/ico/qtsy.ico",
+    "downloadLink": "http://webnet.cloudvast.com/releases/cashier-win-beta"
+  },
+  {
     "id": 2,
     "name": "前台收银(Windows)-测试版",
     "description": "",
